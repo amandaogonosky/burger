@@ -1,5 +1,5 @@
 const orm = require("../config/orm.js");
-const burgers = {
+let burgers = {
     all: function(cb) {
       orm.all("burgers", function(res) {
         cb(res);
@@ -15,9 +15,8 @@ const burgers = {
       orm.update("burgers", objColVals, condition, function(res) {
         cb(res);
       });
-    },
-   
-  };
+    }
+};
   
 //   exporting the functions for the controller or routes
   module.exports = burgers;

@@ -5,7 +5,8 @@ const router = express.Router();
 
 const burger = require ("../models/burgers.js");
 
-router.get("/", function(req, res) {
+module.exports = function(app) {
+  router.get("/", function(req, res) {
     burger.selectAll(function(data) {
       const hbsObject = {
         burger: data
@@ -56,8 +57,9 @@ router.get("/", function(req, res) {
       }
     });
   });
+}
+
   
 
-  module.exports = router;
   
  

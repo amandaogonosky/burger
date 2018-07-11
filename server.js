@@ -6,20 +6,23 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 // const server = http.createServer(handleRequest);
 // .use is how we access express and run the index file
-app.use(express.static(__dirname + "views"));
-app.use(app.router);
+// app.use(express.static(__dirname + "views"));
+app.use(express.static("public"));
+// app.use(app.router);
 
 app.use(bodyParser.urlencoded({ extended: true}));
 
 // parse data/user input from the page body into notation the server can read/and back to the end user
 app.use(bodyParser.json());
 // require handle-bar templating
-var handlbar = require("express-handlebars");
+var exphbs = require("express-handlebars");
+app.engine("handlebars" , exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 
 // access the controllers file to handle server access to routes we created
-const routes = require("./controllers/burgers_controller.js");
-
+let routes = require("./controllers/burgers_controller.js");
+app.use(routes);
 
 // Start our server-this should show what id your on
 app.listen(PORT, function() {
