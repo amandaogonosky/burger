@@ -7,13 +7,14 @@ const burger = require ("../models/burgers.js");
 
 module.exports = function(app) {
   router.get("/", function(req, res) {
-    burger.selectAll(function(data) {
-      const hbsObject = {
-        burger: data
-      };
-      console.log(hbsObject);
-      res.render("index", hbsObject);
-    });
+    // burger.selectAll(function(data) {
+    //   const hbsObject = {
+    //     burger: data
+    //   };
+    //   console.log(hbsObject);
+    //   res.render("index", hbsObject);
+    // });
+    res.send("This worked!");
   });
   
   router.post("/api/burger", function(req, res) {
